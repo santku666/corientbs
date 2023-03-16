@@ -63,7 +63,7 @@ class Books extends Controller
                 "author.max"=>"Author name must be maximum 100 Characters",
                 "price.required"=>"Price is Mandatory",
                 "price.numeric"=>"Price must be numeric value",
-                "price.min  "=>"Price must be non negative value"
+                "price.min"=>"Price must be non negative value"
             ]);
             if ($validator->fails()) {
                 $body=[
