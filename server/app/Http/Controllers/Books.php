@@ -54,7 +54,7 @@ class Books extends Controller
             $validator=Validator::make($request->all(),[
                 "name"=>["required","max:100","unique:books"],
                 "author"=>["required","max:100"],
-                "price"=>["required","numeric"]
+                "price"=>["required","numeric","min:0"]
             ],[
                 "name.required"=>"Name is Mandatory",
                 "name:max"=>"Name must be maximum 100 Characters",
@@ -62,7 +62,8 @@ class Books extends Controller
                 "author.required"=>"Author name is Mandatory",
                 "author.max"=>"Author name must be maximum 100 Characters",
                 "price.required"=>"Price is Mandatory",
-                "price.numeric"=>"Price must be numeric value"
+                "price.numeric"=>"Price must be numeric value",
+                "price.min  "=>"Price must be non negative value"
             ]);
             if ($validator->fails()) {
                 $body=[
@@ -138,7 +139,7 @@ class Books extends Controller
             $validator=Validator::make($request->all(),[
                 "name"=>["required","max:100",Rule::unique('books')->ignore($id)],
                 "author"=>["required","max:100"],
-                "price"=>["required","numeric"]
+                "price"=>["required","numeric","min:0"]
             ],[
                 "name.required"=>"Name is Mandatory",
                 "name:max"=>"Name must be maximum 100 Characters",
@@ -146,7 +147,8 @@ class Books extends Controller
                 "author.required"=>"Author name is Mandatory",
                 "author.max"=>"Author name must be maximum 100 Characters",
                 "price.required"=>"Price is Mandatory",
-                "price.numeric"=>"Price must be numeric value"
+                "price.numeric"=>"Price must be numeric value",
+                "price.min"=>"Price must be non negative value"
             ]);
             if ($validator->fails()) {
                 $body=[

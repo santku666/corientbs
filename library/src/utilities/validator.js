@@ -12,4 +12,12 @@ const required = (input) =>{
     );
 }
 
+const non_negative = (input)=>{
+    return (
+        input < 0 ? false : true
+    );
+}
+
+
 export const Required = (input) => required(input)
+export const Non_negative = (input) => non_negative(input)

@@ -78,14 +78,14 @@ function Edit(props) {
             if (result.status==200) {
                 navigate('/books');
             }else{
-                if (typeof result.data.message==="object") {
-                    for (const key in result.data.message) {
-                        if (Object.hasOwnProperty.call(Form_data, key)) {
-                            const element = Form_data[key];
+                if (typeof result.response.data.message==="object") {
+                    for (const key in result.response.data.message) {
+                        if (Object.hasOwnProperty.call(result.response.data.message, key)) {
+                            const element = result.response.data.message[key];
                             setForm_data(state=>{
                                 const newState = {...state};
                                 newState[`${key}`].isValid=false;
-                                newState[`${key}`].error=`${key} is Mandatory`;
+                                newState[`${key}`].error=`${element}`;
                                 return newState;
                              })
                         }

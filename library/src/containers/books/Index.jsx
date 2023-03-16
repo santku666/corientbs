@@ -204,13 +204,13 @@ const ModalComp=forwardRef((props,ref)=>{
                 handleClose();
             }else{
                 if (typeof result.response.data.message==="object") {
-                    for (const key in result.data.message) {
-                        if (Object.hasOwnProperty.call(Form_data, key)) {
-                            const element = Form_data[key];
+                    for (const key in result.response.data.message) {
+                        if (Object.hasOwnProperty.call(result.response.data.message, key)) {
+                            const element = result.response.data.message[key];
                             setForm_data(state=>{
                                 const newState = {...state};
                                 newState[`${key}`].isValid=false;
-                                newState[`${key}`].error=`${key} is Mandatory`;
+                                newState[`${key}`].error=`${element}`;
                                 return newState;
                              })
                         }
